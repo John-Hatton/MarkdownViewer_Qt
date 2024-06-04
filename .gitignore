@@ -1,0 +1,7 @@
+.idea/
+build/
+cmake-build-debug-visual-studio-2019/
+cmake-build-release-visual-studio-2019/
+cmake-build-debug-visual-studio-2022/
+
+
