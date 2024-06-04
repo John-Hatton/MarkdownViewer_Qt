@@ -87,17 +87,15 @@ void MarkdownViewer::openFolder()
 {
     QString folderPath = QFileDialog::getExistingDirectory(this, "Open Folder", QString());
     if (!folderPath.isEmpty()) {
-        QDirIterator it(folderPath, QStringList() << "*.md", QDir::Files, QDirIterator::Subdirectories);
-        while (it.hasNext()) {
-            folderMenu->addMarkdownFile(it.next());
-        }
+        folderMenu->getFileTree()->clear();
+        folderMenu->addMarkdownFilesFromDirectory(folderPath);
     }
 }
 
 void MarkdownViewer::handleFolderMenuToggle()
 {
     QList<int> sizes;
-    if (folderMenu->getFileList()->isVisible()) {
+    if (folderMenu->getFileTree()->isVisible()) {
         sizes << folderMenu->getLastWidth() << (splitter->width() - folderMenu->getLastWidth());
     } else {
         sizes << 30 << (splitter->width() - 30);

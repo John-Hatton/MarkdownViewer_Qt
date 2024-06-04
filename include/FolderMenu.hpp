@@ -3,7 +3,7 @@
 //
 
 #include <QWidget>
-#include <QListWidget>
+#include <QTreeWidget>
 #include <QVBoxLayout>
 #include <QPushButton>
 
@@ -16,8 +16,8 @@ Q_OBJECT
 public:
     explicit FolderMenu(QWidget *parent = nullptr);
 
-    void addMarkdownFile(const QString &filePath);
-    QListWidget *getFileList() const; // Method to access the file list
+    void addMarkdownFilesFromDirectory(const QString &directoryPath, QTreeWidgetItem *parentItem = nullptr);
+    QTreeWidget *getFileTree() const; // Method to access the file tree
     int getLastWidth() const { return lastWidth; }
     void setLastWidth(int width) { lastWidth = width; }
 
@@ -26,12 +26,12 @@ signals:
     void toggled(); // Signal to notify when the folder menu is toggled
 
 private slots:
-    void onItemClicked(QListWidgetItem *item);
+    void onItemClicked(QTreeWidgetItem *item, int column);
 
 private:
     QVBoxLayout *layout;
     QPushButton *toggleButton;
-    QListWidget *fileList;
+    QTreeWidget *fileTree;
     int lastWidth; // Store the last width before collapsing
 };
 

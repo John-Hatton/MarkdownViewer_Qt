@@ -12,7 +12,6 @@
 #ifndef MARKDOWNVIEWER_QT_MARKDOWNVIEWER_HPP
 #define MARKDOWNVIEWER_QT_MARKDOWNVIEWER_HPP
 
-
 class MarkdownViewer : public QWidget
 {
 Q_OBJECT
